@@ -14,7 +14,7 @@ function connect() {
 }
 
 function sendSearchingText() {
-    stompClient.send("/app/search", {}, JSON.stringify({'name': $("#search").val()}));
+    stompClient.send("/app/search", {}, JSON.stringify({'searchItem': $("#search").val()}));
 }
 
 function showGreeting(name, address, cost) {

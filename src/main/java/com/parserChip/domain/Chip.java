@@ -3,12 +3,12 @@ package com.parserChip.domain;
 public class Chip {
     private String name;
     private String address;
-    private Integer cost;
+    private String cost;
 
     public Chip() {
     }
 
-    public Chip(String name, String address, Integer cost) {
+    public Chip(String name, String address, String cost) {
         this.name = name;
         this.address = address;
         this.cost = cost;
@@ -30,11 +30,11 @@ public class Chip {
         this.address = address;
     }
 
-    public Integer getCost() {
+    public String getCost() {
         return cost;
     }
 
-    public void setCost(Integer cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 }

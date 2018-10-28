@@ -8,14 +8,13 @@ function connect() {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/chip', function (chip) {
             parseChip = JSON.parse(chip.body);
-            console.log(parseChip.cost);
             showGreeting(parseChip.name, parseChip.address, parseChip.cost);
         });
     });
 }
 
 function sendSearchingText() {
-    stompClient.send("/app/search", {}, JSON.stringify({'name': $("#search").val()}));
+    stompClient.send("/app/search", {}, JSON.stringify({'searchItem': $("#search").val()}));
 }
 
 function showGreeting(name, address, cost) {

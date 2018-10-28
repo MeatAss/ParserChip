@@ -2,20 +2,20 @@ package com.parserChip.domain;
 
 public class SearchMessage {
 
-    private String name;
+    private String searchItem;
 
     public SearchMessage() {
     }
 
-    public SearchMessage(String name) {
-        this.name = name;
+    public SearchMessage(String searchItem) {
+        this.searchItem = searchItem;
     }
 
-    public String getName() {
-        return name;
+    public String getSearchItem() {
+        return searchItem;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSearchItem(String searchItem) {
+        this.searchItem = searchItem;
     }
 }
