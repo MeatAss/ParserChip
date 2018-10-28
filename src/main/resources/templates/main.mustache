@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+<div class="btn-toolbar justify-content-between m-1 float-right" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <div class="input-group-text" id="btnGroupAddon2"><i class="fas fa-search"></i></div>
+        </div>
+        <input type="text" class="form-control" placeholder="Write search text" aria-label="Write search text" aria-describedby="btnGroupAddon2">
+    </div>
+</div>
+
+<div>
+    <table id="mainTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Ссылка</th>
+                <th scope="col">Цена</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#mainTableItems}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{address}}</td>
+                <td>{{cost}}</td>
+            </tr>
+            {{/mainTableItems}}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
