@@ -8,7 +8,7 @@ function connect() {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/chip', function (chip) {
             parseChip = JSON.parse(chip.body);
-            showGreeting(parseChip.name, parseChip.address, parseChip.cost);
+            parseChip.forEach(function(item) { showGreeting(item.name, item.address, item.cost) });
         });
     });
 }
