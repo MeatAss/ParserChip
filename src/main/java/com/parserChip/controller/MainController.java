@@ -1,6 +1,7 @@
 package com.parserChip.controller;
 
 import com.parserChip.domain.Chip;
+import com.parserChip.domain.ChipInformation;
 import com.parserChip.domain.SearchMessage;
 import com.parserChip.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,21 @@ public class MainController {
     private MainService mainService;
 
     @MessageMapping("/search")
-    @SendTo("/topic/chip")
+    @SendTo("/topic/search")
     public List<Chip> needSearch(SearchMessage searchMessage) throws Exception {
-        return mainService.startParse(searchMessage.getSearchItem());
+        return mainService.startParse(searchMessage.getMessage());
+    }
+
+    @MessageMapping("/nextChips")
+    @SendTo("/topic/nextChips")
+    public List<Chip> nextChips() throws Exception {
+        return mainService.getFirstChips();
+    }
+
+    @MessageMapping("/information")
+    @SendTo("/topic/information")
+    public ChipInformation information(SearchMessage searchMessage) throws Exception {
+        return mainService.getInformation(searchMessage.getMessage(), searchMessage.getId());
     }
 
     @GetMapping("/main")

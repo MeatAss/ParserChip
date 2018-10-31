@@ -1,18 +1,29 @@
 package com.parserChip.service;
 
+import com.parserChip.domain.Chip;
 import com.parserChip.domain.Parser;
+import com.parserChip.interfaces.ParsingListener;
 
-public class AsyncParsingRunnable implements Runnable  {
+import java.util.ArrayList;
+import java.util.List;
+
+public class AsyncParsingRunnable implements Runnable {
 
     private Parser parser;
     private String search;
+    private List<Chip> chips;
 
-    public AsyncParsingRunnable(Parser parser) {
-        this.parser = parser;
+    public List<Chip> getChips() {
+        return chips;
     }
 
     public String getSearch() {
         return search;
+    }
+
+    public AsyncParsingRunnable(Parser parser, List<Chip> chips) {
+        this.parser = parser;
+        this.chips = chips;
     }
 
     public void setSearch(String search) {
@@ -21,6 +32,10 @@ public class AsyncParsingRunnable implements Runnable  {
 
     @Override
     public void run() {
-        parser.getChips(search);
+        List<Chip> newChips = parser.getChips(search);
+        synchronized(chips)
+        {
+            chips.addAll(newChips);
+        }
     }
 }
